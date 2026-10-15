@@ -1,0 +1,10 @@
+{
+  "checked_on": "2026-10-15",
+  "source_commit": "7b74c4b",
+  "method": "clone local dos arquivos versionados, bootstrap oficial novo, execução integral do notebook com ambiente Python já instalado",
+  "code_cells_executed": 14,
+  "errors": 0,
+  "training": "reutilização dos pesos e históricos originais concluídos",
+  "evaluation": "inferência repetida; acurácia, F1 e mAP iguais aos registros originais; latências variam",
+  "colab_drive_mount": "não verificado; montagem só executa no Colab"
+}

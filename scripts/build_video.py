@@ -140,7 +140,7 @@ def main():
     command = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', str(concat)]
     if args.audio:
         command += ['-i', str(args.audio), '-c:a', 'aac', '-b:a', '192k', '-shortest']
-    command += ['-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-r', '24', '-pix_fmt', 'yuv420p',
+    command += ['-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-vf', 'fps=24', '-fps_mode', 'cfr', '-pix_fmt', 'yuv420p',
                 '-t', f'{sum(durations):.6f}', '-movflags', '+faststart', str(target)]
     subprocess.run(command, check=True)
     print(target)

@@ -9,6 +9,7 @@ Experimento de visão computacional com 80 imagens reais de gatos e carros. Comp
 - [Abrir no Google Colab](https://colab.research.google.com/github/FIAP-PROJECTS-GABRIEL-MARCOLINO-RAMOS/farmtech-fase6-gabriel-marcolino-ramos/blob/main/notebooks/GabrielMarcolinoRamos_rm565717_pbl_fase6.ipynb)
 - [Imagens e rótulos no Drive](https://drive.google.com/drive/folders/1VGalo7vTeXqBAu0D-RESBMgMX6a5iobW) — cópia na conta do titular; a base também está neste repositório.
 - **Vídeo:** aguardando a gravação da voz de Gabriel e publicação no YouTube como não listado. [Roteiro](docs/narracao.txt).
+- [Prévia silenciosa da demonstração](output/video/previa_sem_narracao.mp4) — montagem das saídas reais, ainda sem narração.
 
 ## Arquivos
 
@@ -40,6 +41,8 @@ jupyter nbconvert --to notebook --execute --inplace \
 ```
 
 `REUTILIZAR_TREINOS=True` preserva os treinos originais e repete a avaliação; usar `False` para treinar novamente. Tempos preservados são dos treinos originais, e novas execuções podem variar. O bootstrap fixa o YOLOv5 v7.0 e baixa seu checkpoint oficial. Os dados estão versionados, permitindo execução sem acesso à cópia privada do Drive.
+
+A execução integral também foi conferida em uma cópia limpa dos arquivos versionados, com o ambiente Python existente: 14 células sem erros e reprodução das métricas de acurácia, F1 e mAP. [Registro da verificação](results/reproduction_check.json).
 
 ## Situação da entrega
 

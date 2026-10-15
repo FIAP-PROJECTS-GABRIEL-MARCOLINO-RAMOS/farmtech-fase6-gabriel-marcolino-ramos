@@ -11,3 +11,4 @@ data/dataset-local.yaml
 data/dataset-coco-local.yaml
 data/classification/
 output/
+video/voz-gabriel.*

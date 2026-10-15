@@ -1,0 +1,10 @@
+Olá, professor(a). Sou Gabriel Marcolino Ramos, RM565717.
+
+Estou finalizando a atividade “Fase 6 — O despertar da Rede Neural”, cujo prazo original foi 13/10/2026 às 23h59. Ao acessar a atividade em 15/10/2026, encontro “Entrega pendente” e a mensagem “O prazo desta atividade foi encerrado”, sem opção de envio.
+
+A página também apresenta o aviso geral de recebimento até três dias após o prazo, com a limitação de nota correspondente. Poderia verificar se é possível reabrir o envio para que eu conclua a submissão?
+
+O projeto está organizado no repositório:
+https://github.com/FIAP-PROJECTS-GABRIEL-MARCOLINO-RAMOS/farmtech-fase6-gabriel-marcolino-ramos
+
+Obrigado.
