@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-10-15",
+  "file": "output/video/GabrielMarcolinoRamos_rm565717_fase6.mp4",
+  "sha256": "838548e293ed78e432b2175aeb3ca7561098ab4728a9743620106e52cee19bf5",
+  "duration_seconds": 297.508,
+  "resolution": "1920x1080",
+  "fps": 24,
+  "video_codec": "H.264",
+  "audio_codec": "AAC",
+  "decode_all_frames": "passed; ffmpeg exit 0; no errors",
+  "original_voice_preserved": true,
+  "original_seconds": 357.9865,
+  "tempo_multiplier": 1.1293838655462196,
+  "integrated_loudness_lufs": -17.6,
+  "true_peak_dbfs": -1.1,
+  "visual_check": "quadros-fonte e quadro codificado de detecção conferidos",
+  "publication": "pendente; MP4 narrado mantido localmente"
+}

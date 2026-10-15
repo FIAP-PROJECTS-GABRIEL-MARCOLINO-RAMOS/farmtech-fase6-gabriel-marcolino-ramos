@@ -12,3 +12,5 @@ data/dataset-coco-local.yaml
 data/classification/
 output/
 video/voz-gabriel.*
+video/transcricao-original.json
+video/sincronizacao.json

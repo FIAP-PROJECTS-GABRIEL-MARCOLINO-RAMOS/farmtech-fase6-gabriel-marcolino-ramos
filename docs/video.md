@@ -16,3 +16,11 @@ Texto de narração: `narracao.txt`. Ler em ritmo natural, visando de 4min20s a 
 Gravar em ambiente silencioso, com o celular ou microfone habitual. Preservar o áudio original em `video/voz-gabriel.*` (não versionar dados desnecessários). O roteiro não afirma que a etapa MakeSense foi concluída antes da evidência. Ao concluir essa etapa, a frase correspondente pode ser atualizada para descrevê-la precisamente.
 
 Após receber a gravação: conferir duração e inteligibilidade, sincronizar as telas reais do projeto com a fala, exportar MP4 e conferir o vídeo completo. Publicar no YouTube como **não listado**, inserir o endereço no README e verificar acesso. O vídeo ainda não está publicado.
+
+## Gravação recebida em 15/10/2026
+
+O áudio original foi preservado localmente em `video/voz-gabriel.ogg` e está excluído do Git. Duração original: 357,99 s. A edição encurta pausas, retira uma frase redundante sobre os treinos e aplica ajuste de ritmo de aproximadamente 1,129 vez, preservando o tom. A faixa editada tem 297,51 s. A sincronização usa limites por palavra de uma transcrição automática local; essa transcrição não é uma legenda revisada.
+
+O MP4 narrado fica em `output/video/GabrielMarcolinoRamos_rm565717_fase6.mp4`. A publicação no YouTube como não listado ainda está pendente. O vídeo com voz não é enviado automaticamente ao repositório público.
+
+A montagem usa `scripts/prepare_voice.py` e `scripts/build_video.py --audio output/video/voz-gabriel-editada.wav --timeline video/sincronizacao.json`. A montagem possui cenas estáticas com saídas reais, sem simular execução ao vivo. A referência ao MakeSense permanece pendente, conforme a situação efetiva da etapa.

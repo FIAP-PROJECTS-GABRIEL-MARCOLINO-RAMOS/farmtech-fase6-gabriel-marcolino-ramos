@@ -121,6 +121,7 @@ def build_frames():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--audio', type=Path)
+    parser.add_argument('--timeline', type=Path, help='JSON com scenes[{frame,start,end}] alinhado à gravação')
     parser.add_argument('--frames-only', action='store_true')
     args = parser.parse_args()
     frames = build_frames()
@@ -133,16 +134,35 @@ def main():
         duration = float(info['format']['duration'])
         if duration > 298:
             raise ValueError('Áudio excede 298 s; editar/gravar novamente para respeitar cinco minutos.')
-        durations = [s * duration / sum(durations) for s in durations]
-    concat = FRAMES / 'concat.txt'
-    concat.write_text(''.join(f"file '{p}'\nduration {s:.6f}\n" for p, s in zip(frames, durations)) + f"file '{frames[-1]}'\n")
+        if args.timeline:
+            scenes = json.loads(args.timeline.read_text())['scenes']
+            assert [s['frame'] for s in scenes] == list(range(len(frames)))
+            assert abs(scenes[-1]['end'] - duration) < .1
+            durations = [s['end'] - s['start'] for s in scenes]
+            assert all(d > 0 for d in durations)
+        else:
+            durations = [s * duration / sum(durations) for s in durations]
     target = OUT / ('GabrielMarcolinoRamos_rm565717_fase6.mp4' if args.audio else 'previa_sem_narracao.mp4')
-    command = ['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', str(concat)]
+    silent_target = FRAMES / 'cenas-sincronizadas.mp4' if args.audio else target
+    # Segmentos de taxa constante evitam filas grandes de quadros com PNGs esparsos.
+    segments, elapsed = [], 0.0
+    for i, (frame, scene_duration) in enumerate(zip(frames, durations)):
+        count = round((elapsed + scene_duration)*24)-round(elapsed*24)
+        elapsed += scene_duration
+        segment = FRAMES / f'scene-{i:02d}.mp4'
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-loop', '1', '-framerate', '24',
+                        '-i', str(frame), '-frames:v', str(count), '-an', '-c:v', 'libx264', '-threads', '2',
+                        '-preset', 'veryfast', '-tune', 'stillimage', '-pix_fmt', 'yuv420p', str(segment)], check=True)
+        segments.append(segment)
+        print(f'Cena {i+1}/{len(frames)}: {count} quadros', flush=True)
+    concat = FRAMES / 'segments.txt'
+    concat.write_text(''.join(f"file '{p}'\n" for p in segments))
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', str(concat),
+                    '-c', 'copy', '-movflags', '+faststart', str(silent_target)], check=True)
     if args.audio:
-        command += ['-i', str(args.audio), '-c:a', 'aac', '-b:a', '192k', '-shortest']
-    command += ['-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-vf', 'fps=24', '-fps_mode', 'cfr', '-pix_fmt', 'yuv420p',
-                '-t', f'{sum(durations):.6f}', '-movflags', '+faststart', str(target)]
-    subprocess.run(command, check=True)
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(silent_target), '-i', str(args.audio),
+                        '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
+                        '-t', f'{sum(durations):.6f}', '-movflags', '+faststart', str(target)], check=True)
     print(target)
 
 if __name__ == '__main__':
