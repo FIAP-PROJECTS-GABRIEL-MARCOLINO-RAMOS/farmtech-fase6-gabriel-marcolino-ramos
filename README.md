@@ -8,7 +8,7 @@ Experimento de visão computacional com 80 imagens reais de gatos e carros. Comp
 - [Notebook executado](notebooks/GabrielMarcolinoRamos_rm565717_pbl_fase6.ipynb)
 - [Abrir no Google Colab](https://colab.research.google.com/github/FIAP-PROJECTS-GABRIEL-MARCOLINO-RAMOS/farmtech-fase6-gabriel-marcolino-ramos/blob/main/notebooks/GabrielMarcolinoRamos_rm565717_pbl_fase6.ipynb)
 - [Imagens e rótulos no Drive](https://drive.google.com/drive/folders/1VGalo7vTeXqBAu0D-RESBMgMX6a5iobW) — cópia na conta do titular; a base também está neste repositório.
-- **Vídeo:** demonstração com a voz de Gabriel preparada localmente; publicação no YouTube como não listado pendente. [Roteiro](docs/narracao.txt).
+- [Vídeo demonstrativo no YouTube](https://youtu.be/fcv1dElMhMU) — não listado, 4min58s, com a voz de Gabriel. [Roteiro](docs/narracao.txt).
 - [Prévia silenciosa da demonstração](output/video/previa_sem_narracao.mp4) — montagem das saídas reais, ainda sem narração.
 
 ## Arquivos
@@ -44,8 +44,10 @@ jupyter nbconvert --to notebook --execute --inplace \
 
 A execução integral também foi conferida em uma cópia limpa dos arquivos versionados, com o ambiente Python existente: 14 células sem erros e reprodução das métricas de acurácia, F1 e mAP. [Registro da verificação](results/reproduction_check.json).
 
-## Situação da entrega
+## Material para submissão
 
-Prazo original: **13/10/2026 às 23h59**. Preparação em **15/10/2026**, sem alteração artificial de datas. Na consulta autenticada, o portal exibe **“O prazo desta atividade foi encerrado”**, sem controle de envio, e **entrega pendente**. A submissão depende de reabertura pela instituição. Nenhum envio foi confirmado.
+Prazo original: **13/10/2026 às 23h59**. Material finalizado em **15/10/2026**, sem alteração artificial de datas. O portal informa recebimento até 3 dias após o prazo, com nota limitada a 70%. O link “Entregar atividade” abriu o formulário de envio apesar do aviso de prazo encerrado. A confirmação da submissão deve ser verificada no próprio portal; este repositório não é comprovante de entrega.
 
-A revisão/exportação no MakeSense e a publicação do vídeo narrado ainda precisam ser concluídas. O seletor de arquivos do MakeSense não respondeu à automação; os arquivos para importação estão preparados. [Requisitos](docs/requisitos.md) e [rotulação](docs/rotulacao.md). Após o envio acadêmico confirmado, não realizar novos commits.
+A importação de 64 imagens e das caixas VOC no MakeSense, a conferência visual por amostragem e a exportação YOLO foram concluídas. Os 64 arquivos exportados foram comparados com as caixas importadas; a diferença para os rótulos de treino decorre apenas do arredondamento das coordenadas VOC. [Evidências](data/makesense/) e [metodologia](docs/rotulacao.md).
+
+[PDF com os links para submissão](output/pdf/GabrielMarcolinoRamos_rm565717_pbl_fase6.pdf). Após o envio acadêmico confirmado, não realizar novos commits.

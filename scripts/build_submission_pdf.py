@@ -26,9 +26,11 @@ story = [Paragraph('FIAP | Inteligência Artificial', styles['BodyPT']),
          HRFlowable(width='100%', color=colors.HexColor('#bfc7d0'), thickness=1), Spacer(1, 20),
          Paragraph('<b>Repositório do projeto</b>', styles['BodyPT']),
          Paragraph(f'<link href="{REPO}">github.com/FIAP-PROJECTS-GABRIEL-MARCOLINO-RAMOS/<br/>farmtech-fase6-gabriel-marcolino-ramos</link>', styles['LinkPT']),
-         Paragraph('O README centraliza o notebook executado, a base de imagens, os pesos treinados, os resultados e o acesso à demonstração em vídeo quando publicada.', styles['BodyPT']),
+         Paragraph('O README centraliza o notebook executado, a base de imagens, os pesos treinados, os resultados e a demonstração em vídeo.', styles['BodyPT']),
          Paragraph('<b>Escopo</b><br/>Duas classes, 80 imagens e divisão 32/4/4 por classe. Comparação entre YOLOv5n com 30 e 60 épocas, YOLOv5n padrão e CNN treinada do zero.', styles['BodyPT']),
-         Paragraph('<b>Versão de preparação - 15/10/2026</b><br/>Vídeo narrado/publicado e revisão no MakeSense ainda pendentes. Este arquivo não é comprovante de envio. Concluir as pendências registradas no README antes da submissão formal.', styles['BodyPT'])]
+         Paragraph('<b>Vídeo demonstrativo</b><br/><link href="https://youtu.be/fcv1dElMhMU">youtu.be/fcv1dElMhMU</link><br/>Não listado | 4min58s | Narração de Gabriel', styles['BodyPT']),
+         Paragraph('Base e anotações disponíveis no repositório e no Drive. Importação/revisão por amostragem e exportação no MakeSense documentadas no projeto.', styles['BodyPT']),
+         Paragraph('Material finalizado em 15/10/2026. Este PDF reúne os links para avaliação; não é comprovante de envio.', styles['BodyPT'])]
 SimpleDocTemplate(str(OUT), pagesize=A4, rightMargin=55, leftMargin=55, topMargin=58, bottomMargin=50,
                   title='FIAP Fase 6 - Gabriel Marcolino Ramos - RM565717', author='Gabriel Marcolino Ramos').build(story)
 print(OUT)

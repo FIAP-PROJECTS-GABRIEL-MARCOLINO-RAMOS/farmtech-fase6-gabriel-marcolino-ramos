@@ -2,7 +2,7 @@
 
 Atividade: https://on.fiap.com.br/mod/assign/view.php?id=658655
 
-Enunciado consultado no portal autenticado em 15/10/2026. Prazo original: **13/10/2026 às 23h59**. Há aviso geral de recebimento até três dias após o prazo, com nota limitada a 70%. Entretanto, na conferência detalhada em 15/10/2026 a atividade exibe **“O prazo desta atividade foi encerrado”** e não oferece o controle de envio. Estado: **entrega pendente**, sem última modificação. É necessária reabertura pela instituição para submissão; a existência do material local ou do GitHub não comprova envio.
+Enunciado consultado no portal autenticado em 15/10/2026. Prazo original: **13/10/2026 às 23h59**. O portal informa recebimento até três dias após o prazo, com nota limitada a 70%. A atividade exibe “O prazo desta atividade foi encerrado”, mas o link superior “Entregar atividade” abriu o formulário com anexos e “Salvar mudanças”. A confirmação do envio depende do registro efetivo no portal; a existência do material local ou do GitHub não comprova submissão.
 
 ## Entrega 1
 

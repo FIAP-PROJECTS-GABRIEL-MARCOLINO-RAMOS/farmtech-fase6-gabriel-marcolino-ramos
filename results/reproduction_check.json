@@ -6,5 +6,12 @@
   "errors": 0,
   "training": "reutilização dos pesos e históricos originais concluídos",
   "evaluation": "inferência repetida; acurácia, F1 e mAP iguais aos registros originais; latências variam",
-  "colab_drive_mount": "não verificado; montagem só executa no Colab"
+  "colab_drive_mount": "não verificado; montagem só executa no Colab",
+  "final_execution": {
+    "date": "2026-10-15",
+    "code_cells": 14,
+    "errors": 0,
+    "kernel": "farmtech-fase6",
+    "makesense_export_verified": true
+  }
 }

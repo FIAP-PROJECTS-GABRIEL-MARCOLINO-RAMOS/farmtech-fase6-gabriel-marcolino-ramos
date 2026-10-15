@@ -30,8 +30,8 @@
       "recall_at025": 0.5555555555555556
     }
   },
-  "latency_ms_median": 6.216770500031998,
-  "latency_ms_p95": 7.4741442987033215,
+  "latency_ms_median": 5.850535500030674,
+  "latency_ms_p95": 6.998030500153617,
   "latency_samples": 40,
   "imgsz": 416,
   "confidence": 0.25,

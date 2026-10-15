@@ -173,7 +173,7 @@ def audit() -> dict:
               "seed": SEED, "id_overlap": 0, "sha256_overlap": 0,
               "dhash_threshold": 4, "similar_pairs": similar_pairs, "similar_pairs_across_splits": 0,
               "annotation_source": "COCO 2017; conversão automática para YOLO e Pascal VOC",
-              "makesense_review": "Pendente de importação, revisão e exportação no Make Sense AI"}
+              "makesense_review": (json.loads((ROOT / "data/makesense/verificacao.json").read_text()) if (ROOT / "data/makesense/verificacao.json").exists() else "Pendente de importação, revisão e exportação no Make Sense AI")}
     (ROOT / "results/dataset_audit.json").write_text(json.dumps(result, indent=2, ensure_ascii=False))
     return result
 

@@ -1,14 +1,17 @@
 # Rotulação e conferência no Make Sense AI
 
-As caixas de referência são anotações humanas originais do COCO 2017. O script `src/dataset.py` seleciona as imagens e converte as coordenadas para YOLO e Pascal VOC. A conversão automática está concluída. A importação, revisão e exportação no Make Sense AI devem ser comprovadas antes de declarar atendida essa etapa do enunciado.
+As caixas de referência são anotações humanas originais do COCO 2017. O script `src/dataset.py` seleciona as imagens e converte as coordenadas para YOLO e Pascal VOC.
 
-1. Abrir https://www.makesense.ai/ e selecionar as 64 imagens de `data/images/train/`.
-2. Escolher **Object Detection** e criar as classes nesta ordem: `gato`, `carro`.
-3. Importar as anotações Pascal VOC de `data/annotations_voc/train/`.
-4. Conferir o enquadramento das caixas e a classe de cada objeto. Preservar também os objetos pequenos da mesma classe: não remover anotações só para melhorar a métrica.
-5. Exportar em formato YOLO, guardar o ZIP original em `data/makesense/` e salvar uma captura da ferramenta.
-6. Conferir a correspondência dos IDs e comparar as coordenadas exportadas com os rótulos usados. Se houver correções reais, atualizar os rótulos e executar novamente os experimentos antes da entrega.
+Em 15/10/2026, foram importadas as 64 imagens de treinamento em https://www.makesense.ai/, iniciado um projeto Object Detection com classes `gato` e `carro`, nessa ordem, e importados os 64 arquivos Pascal VOC correspondentes. A conferência visual por amostragem preservou as caixas de referência, incluindo objetos pequenos e parcialmente ocluídos. As anotações foram exportadas pela própria ferramenta em YOLO.
 
-Validação e teste possuem rótulos de referência para cálculo das métricas; suas imagens nunca participam dos gradientes de treinamento.
+- Exportação original: `data/makesense/rotulos_makesense_yolo.zip` (64 arquivos, 131 caixas).
+- Captura da interface: `data/makesense/revisao-interface.jpg`.
+- Comparação reproduzível: `python scripts/verify_makesense.py`.
+- Registro e hash: `data/makesense/verificacao.json`.
+- Cópia da exportação no Drive: https://drive.google.com/file/d/1xZhWqPzxayZzHaLu8LjB5bJwDe7uKN3Z/view.
 
-Em 15/10/2026, a importação foi autorizada pelo titular e tentada no makesense.ai. O seletor de arquivos não emitiu o evento de abertura pelas interfaces disponíveis; nenhuma revisão/exportação foi concluída. Não confundir a tentativa com atendimento do requisito.
+Todos os arquivos exportados correspondem às caixas VOC importadas, dentro da precisão do exportador. O VOC arredonda as coordenadas COCO para pixels inteiros; os rótulos usados no treino preservam as coordenadas fracionárias originais. A diferença máxima nos cantos das caixas é de 0,501 pixel, incluindo a precisão de exportação. Não houve alteração semântica de caixas ou classes; os treinos originais e seus resultados foram preservados.
+
+A revisão foi feita sobre anotações humanas preexistentes, sem desenhar novas caixas do zero. Validação e teste possuem rótulos de referência para cálculo das métricas; suas imagens não participam dos gradientes de treinamento.
+
+O vídeo foi gravado antes desta conferência na ferramenta. O estado atualizado e a evidência estão nos arquivos acima.

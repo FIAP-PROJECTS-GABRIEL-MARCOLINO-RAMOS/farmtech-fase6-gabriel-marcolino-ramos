@@ -24,5 +24,25 @@
   ],
   "similar_pairs_across_splits": 0,
   "annotation_source": "COCO 2017; conversão automática para YOLO e Pascal VOC",
-  "makesense_review": "Pendente de importação, revisão e exportação no Make Sense AI"
+  "makesense_review": {
+    "date": "2026-10-15",
+    "tool": "https://www.makesense.ai/",
+    "images_imported": 64,
+    "format_imported": "Pascal VOC",
+    "format_exported": "YOLO ZIP",
+    "class_order": [
+      "gato",
+      "carro"
+    ],
+    "exported_label_files": 64,
+    "boxes": 131,
+    "comparison_with_imported_voc": "64/64 iguais dentro da precisão de exportação (6 casas)",
+    "max_normalized_difference_to_training": 0.002206719999999999,
+    "max_corner_difference_pixels_to_training": 0.5002391999999816,
+    "training_labels_unchanged": true,
+    "rounding": "VOC arredonda as coordenadas COCO para pixels inteiros; treino preserva coordenadas COCO fracionárias. Não houve correção semântica das caixas.",
+    "review": "Conferência visual por amostragem na interface e comparação numérica de todos os 64 arquivos exportados. Caixas humanas COCO preservadas.",
+    "drive_export_file_id": "1xZhWqPzxayZzHaLu8LjB5bJwDe7uKN3Z",
+    "sha256": "d3034d2a7efaa9ed49d7615e1d1e27bbdb72092939cb9d33b76736e1da3b1e13"
+  }
 }

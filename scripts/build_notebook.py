@@ -88,7 +88,7 @@ Foram selecionadas 80 imagens reais do **COCO 2017 validation**. A semente 56571
 
 As imagens originais e suas licenças CC BY, BY-SA, BY-NC ou BY-NC-SA constam em `manifest.csv`, com URL COCO, página Flickr e SHA-256. O uso desta seleção é acadêmico e não comercial. As caixas de referência provêm de anotações humanas do COCO. Os formatos YOLO e Pascal VOC são conversões dessas anotações; não são rótulos previstos pelo modelo.
 
-**Make Sense AI:** o enunciado exige a rotulação nessa ferramenta. O pacote Pascal VOC está preparado para importação. A revisão/exportação na ferramenta permanece uma pendência até que exista evidência do procedimento em `data/makesense/`; a conversão automática não comprova essa etapa. Ver `docs/rotulacao.md`.
+**Make Sense AI:** as 64 imagens e caixas Pascal VOC foram importadas na ferramenta em 15/10/2026. A conferência visual por amostragem preservou as anotações humanas COCO; a exportação YOLO original está em `data/makesense/`, com comparação numérica de todos os arquivos. A diferença para os rótulos fracionários de treino decorre do arredondamento VOC (até 0,501 pixel). Ver `docs/rotulacao.md`.
 """)
 code('''
 # Auditoria: 80 arquivos válidos, contagens, hashes e caixas normalizadas.
@@ -229,7 +229,7 @@ O conjunto tem só 40 imagens por classe e somente quatro por classe no teste. O
 
 O YOLO utiliza pré-treinamento COCO, enquanto a CNN é aleatória; essa diferença faz parte da análise, mas limita comparações causais entre arquiteturas. Há uma única semente e uma única divisão. A triagem de semelhança é heurística. As latências pertencem ao computador e às condições de execução descritos, sem garantia de desempenho em outra máquina.
 
-A execução demonstrou o pipeline completo de dados, treinamento, validação, teste e comparação. A cópia das 80 imagens (64/8/8), do manifesto e do ZIP de rótulos no Drive foi verificada em 15/10/2026 (`docs/drive.json`). **MakeSense e vídeo narrado/publicado permanecem pendentes. O portal exibe prazo encerrado e entrega pendente, sem controle de envio; é necessária reabertura institucional.** Não há envio acadêmico confirmado apenas pela existência deste notebook.
+A execução demonstrou o pipeline completo de dados, treinamento, validação, teste e comparação. A cópia das 80 imagens (64/8/8), do manifesto e do ZIP de rótulos no Drive foi verificada em 15/10/2026 (`docs/drive.json`). A revisão/exportação no MakeSense está documentada em `data/makesense/`. O [vídeo narrado por Gabriel](https://youtu.be/fcv1dElMhMU) foi publicado como não listado, com duração de 4min58s. O formulário de envio abriu pelo link superior do portal apesar do aviso de prazo encerrado. A confirmação da entrega deve ser verificada no portal; não realizar commits após o envio. Não há envio acadêmico confirmado apenas pela existência deste notebook.
 """)
 code('''
 if DRIVE_PROJECT is not None:
