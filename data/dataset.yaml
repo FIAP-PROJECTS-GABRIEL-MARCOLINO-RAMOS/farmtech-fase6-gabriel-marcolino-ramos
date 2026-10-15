@@ -1,0 +1,9 @@
+# Em cada ambiente, src.dataset.configure cria dataset-local.yaml com o caminho absoluto.
+path: data
+train: images/train
+val: images/val
+test: images/test
+nc: 2
+names:
+  0: gato
+  1: carro

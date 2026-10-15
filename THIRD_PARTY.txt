@@ -1,0 +1,12 @@
+YOLOv5 v7.0, Ultralytics
+Fonte: https://github.com/ultralytics/yolov5/tree/v7.0
+Commit: 915bbf294bb74c859f0b41f1c23bc395014ea679
+Código original obtido pelo bootstrap; licença GPL-3.0 reproduzida em docs/YOLOv5-LICENSE.txt.
+Pesos oficiais e modelos ajustados derivam do ecossistema YOLOv5; observar suas condições de licença.
+Não há declaração de licença permissiva sobre código ou pesos de terceiros.
+
+COCO 2017 validation
+Fonte: https://cocodataset.org/#termsofuse
+Anotações COCO: CC BY 4.0. Imagens: direitos e licenças individuais no manifesto data/manifest.csv.
+As imagens são preservadas sem edição; caixas derivadas das anotações de referência.
+Uso acadêmico não comercial; respeitar BY, BY-SA, BY-NC e BY-NC-SA conforme cada registro.

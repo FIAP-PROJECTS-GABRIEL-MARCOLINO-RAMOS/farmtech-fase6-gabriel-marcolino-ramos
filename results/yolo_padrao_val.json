@@ -1,0 +1,72 @@
+{
+  "model": "yolo_padrao",
+  "split": "val",
+  "task": "detection",
+  "map50": 0.6804715119010336,
+  "map50_95": 0.5350156659098027,
+  "precision_at025": 1.0,
+  "recall_at025": 0.5384615384615384,
+  "tp": 7,
+  "fp": 0,
+  "fn": 6,
+  "gt_boxes": 13,
+  "per_class": {
+    "0": {
+      "tp": 2,
+      "fp": 0,
+      "gt": 4,
+      "map50": 0.6950806451612903,
+      "map50_95": 0.5453709677419354,
+      "precision_at025": 1.0,
+      "recall_at025": 0.5
+    },
+    "1": {
+      "tp": 5,
+      "fp": 0,
+      "gt": 9,
+      "map50": 0.6658623786407768,
+      "map50_95": 0.52466036407767,
+      "precision_at025": 1.0,
+      "recall_at025": 0.5555555555555556
+    }
+  },
+  "latency_ms_median": 7.133877499654773,
+  "latency_ms_p95": 8.832328801054246,
+  "latency_samples": 40,
+  "imgsz": 416,
+  "confidence": 0.25,
+  "ap_confidence_min": 0.001,
+  "nms_iou": 0.45,
+  "image_accuracy": 0.625,
+  "correct_images": 5,
+  "image_count": 8,
+  "error_rate": 0.375,
+  "macro_f1": 0.7619047619047619,
+  "abstentions": 3,
+  "accuracy_ci95_wilson": [
+    0.30573785458380187,
+    0.863158240538479
+  ],
+  "confusion_labels": [
+    "gato",
+    "carro",
+    "sem_deteccao"
+  ],
+  "confusion_matrix": [
+    [
+      2,
+      0,
+      2
+    ],
+    [
+      0,
+      3,
+      1
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "selected_model": "yolov5n_60ep",
+  "criterion": "maior mAP50-95 na validação; teste não participa da escolha",
+  "validation_map50_95": 0.32263782838682264
+}

@@ -1,0 +1,31 @@
+{
+  "versao": 1,
+  "confirmado_em": "2026-09-08",
+  "nome_completo": "Gabriel Marcolino Ramos",
+  "email_academico": "rm565717@fiap.com.br",
+  "rm": "RM565717",
+  "rm_numero": "565717",
+  "organizacao_github": "FIAP-PROJECTS-GABRIEL-MARCOLINO-RAMOS",
+  "participacao_padrao": {
+    "modalidade_dos_trabalhos": "em grupo",
+    "execucao": "Gabriel realiza os trabalhos sozinho",
+    "quantidade_integrantes": 1,
+    "integrantes": [
+      {
+        "nome_completo": "Gabriel Marcolino Ramos",
+        "rm": "RM565717",
+        "email_academico": "rm565717@fiap.com.br"
+      }
+    ],
+    "regra": "Adicionar outras pessoas somente quando Gabriel informar."
+  },
+  "prefixo_arquivos_academicos": "GabrielMarcolinoRamos_rm565717",
+  "preferencias_redacao": {
+    "estilo": "Descrição direta e revisada do projeto, da base e da metodologia.",
+    "evitar": [
+      "fornecido pelo integrante",
+      "comentários sobre a preparação do material"
+    ],
+    "preservar": "Limitações técnicas e pendências reais."
+  }
+}

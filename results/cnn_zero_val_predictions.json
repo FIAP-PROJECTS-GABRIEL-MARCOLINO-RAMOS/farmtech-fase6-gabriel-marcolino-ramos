@@ -1,0 +1,50 @@
+[
+  {
+    "file": "data/images/val/000000080949.jpg",
+    "true_class": 0,
+    "image_prediction": 0,
+    "probability": 0.6458103060722351
+  },
+  {
+    "file": "data/images/val/000000109055.jpg",
+    "true_class": 0,
+    "image_prediction": 1,
+    "probability": 0.7437171936035156
+  },
+  {
+    "file": "data/images/val/000000219578.jpg",
+    "true_class": 0,
+    "image_prediction": 0,
+    "probability": 0.7567031383514404
+  },
+  {
+    "file": "data/images/val/000000286708.jpg",
+    "true_class": 0,
+    "image_prediction": 1,
+    "probability": 0.6307616829872131
+  },
+  {
+    "file": "data/images/val/000000147740.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.5595319271087646
+  },
+  {
+    "file": "data/images/val/000000181816.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.6893041133880615
+  },
+  {
+    "file": "data/images/val/000000206487.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.5808356404304504
+  },
+  {
+    "file": "data/images/val/000000293071.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.6861264705657959
+  }
+]

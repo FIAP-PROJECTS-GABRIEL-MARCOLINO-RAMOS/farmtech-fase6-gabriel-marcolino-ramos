@@ -1,0 +1,72 @@
+{
+  "model": "yolov5n_60ep",
+  "split": "test",
+  "task": "detection",
+  "map50": 0.5724729739121361,
+  "map50_95": 0.365900375154227,
+  "precision_at025": 0.6666666666666666,
+  "recall_at025": 0.5454545454545454,
+  "tp": 6,
+  "fp": 3,
+  "fn": 5,
+  "gt_boxes": 11,
+  "per_class": {
+    "0": {
+      "tp": 3,
+      "fp": 2,
+      "gt": 5,
+      "map50": 0.6054252181393635,
+      "map50_95": 0.3487197633385418,
+      "precision_at025": 0.6,
+      "recall_at025": 0.6
+    },
+    "1": {
+      "tp": 3,
+      "fp": 1,
+      "gt": 6,
+      "map50": 0.5395207296849087,
+      "map50_95": 0.3830809869699123,
+      "precision_at025": 0.75,
+      "recall_at025": 0.5
+    }
+  },
+  "latency_ms_median": 6.331409999802418,
+  "latency_ms_p95": 8.55133324939743,
+  "latency_samples": 40,
+  "imgsz": 416,
+  "confidence": 0.25,
+  "ap_confidence_min": 0.001,
+  "nms_iou": 0.45,
+  "image_accuracy": 0.75,
+  "correct_images": 6,
+  "image_count": 8,
+  "error_rate": 0.25,
+  "macro_f1": 0.8333333333333333,
+  "abstentions": 2,
+  "accuracy_ci95_wilson": [
+    0.40926987910258916,
+    0.9285223111419724
+  ],
+  "confusion_labels": [
+    "gato",
+    "carro",
+    "sem_deteccao"
+  ],
+  "confusion_matrix": [
+    [
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ]
+}

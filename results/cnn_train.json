@@ -1,0 +1,16 @@
+{
+  "model": "cnn_zero",
+  "epochs": 60,
+  "training_seconds": 19.523087903000487,
+  "best_epoch": 7,
+  "best_val_loss": 0.618316113948822,
+  "seed": 565717,
+  "parameters": 89314,
+  "class_to_idx": {
+    "carro": 0,
+    "gato": 1
+  },
+  "device": "cuda:0",
+  "selection_split": "val",
+  "pretrained": false
+}

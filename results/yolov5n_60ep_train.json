@@ -1,0 +1,13 @@
+{
+  "model": "yolov5n_60ep",
+  "epochs": 60,
+  "training_seconds": 116.61392764199991,
+  "best_epoch": 54,
+  "best_fitness": 0.3549800000000001,
+  "seed": 565717,
+  "imgsz": 416,
+  "batch": 8,
+  "initial_weights": "yolov5n.pt — COCO pré-treinado",
+  "selection_split": "val",
+  "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU"
+}

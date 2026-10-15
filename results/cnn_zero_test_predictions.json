@@ -1,0 +1,50 @@
+[
+  {
+    "file": "data/images/test/000000177015.jpg",
+    "true_class": 0,
+    "image_prediction": 0,
+    "probability": 0.7124233245849609
+  },
+  {
+    "file": "data/images/test/000000187236.jpg",
+    "true_class": 0,
+    "image_prediction": 0,
+    "probability": 0.8108435869216919
+  },
+  {
+    "file": "data/images/test/000000284623.jpg",
+    "true_class": 0,
+    "image_prediction": 1,
+    "probability": 0.5402883887290955
+  },
+  {
+    "file": "data/images/test/000000443303.jpg",
+    "true_class": 0,
+    "image_prediction": 1,
+    "probability": 0.556376039981842
+  },
+  {
+    "file": "data/images/test/000000097679.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.6847580075263977
+  },
+  {
+    "file": "data/images/test/000000274411.jpg",
+    "true_class": 1,
+    "image_prediction": 0,
+    "probability": 0.5049538612365723
+  },
+  {
+    "file": "data/images/test/000000527220.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.656857430934906
+  },
+  {
+    "file": "data/images/test/000000560474.jpg",
+    "true_class": 1,
+    "image_prediction": 1,
+    "probability": 0.6471486687660217
+  }
+]

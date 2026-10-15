@@ -1,0 +1,41 @@
+{
+  "model": "cnn_zero",
+  "split": "val",
+  "task": "classification",
+  "imgsz": 128,
+  "latency_ms_median": 4.029986000205099,
+  "latency_ms_p95": 4.86342839885765,
+  "latency_samples": 40,
+  "image_accuracy": 0.75,
+  "correct_images": 6,
+  "image_count": 8,
+  "error_rate": 0.25,
+  "macro_f1": 0.7333333333333334,
+  "abstentions": 0,
+  "accuracy_ci95_wilson": [
+    0.40926987910258916,
+    0.9285223111419724
+  ],
+  "confusion_labels": [
+    "gato",
+    "carro",
+    "sem_deteccao"
+  ],
+  "confusion_matrix": [
+    [
+      2,
+      2,
+      0
+    ],
+    [
+      0,
+      4,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ]
+  ]
+}

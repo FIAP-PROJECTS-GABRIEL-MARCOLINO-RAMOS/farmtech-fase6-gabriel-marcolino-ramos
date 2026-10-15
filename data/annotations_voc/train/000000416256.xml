@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<annotation><filename>000000416256.jpg</filename><size><width>500</width><height>375</height><depth>3</depth></size><object><name>gato</name><bndbox><xmin>118</xmin><ymin>86</ymin><xmax>369</xmax><ymax>240</ymax></bndbox></object></annotation>

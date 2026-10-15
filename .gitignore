@@ -1,0 +1,13 @@
+.venv/
+.cache/
+vendor/
+__pycache__/
+*.pyc
+*.cache
+.ipynb_checkpoints/
+results/runs/
+models/yolov5n.pt
+data/dataset-local.yaml
+data/dataset-coco-local.yaml
+data/classification/
+output/

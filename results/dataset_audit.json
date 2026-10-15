@@ -1,0 +1,28 @@
+{
+  "images": 80,
+  "boxes": 155,
+  "counts": {
+    "gato/test": 4,
+    "carro/test": 4,
+    "gato/train": 32,
+    "carro/train": 32,
+    "gato/val": 4,
+    "carro/val": 4
+  },
+  "seed": 565717,
+  "id_overlap": 0,
+  "sha256_overlap": 0,
+  "dhash_threshold": 4,
+  "similar_pairs": [
+    {
+      "image_a": "163155",
+      "image_b": "255965",
+      "distance": 3,
+      "split_a": "train",
+      "split_b": "train"
+    }
+  ],
+  "similar_pairs_across_splits": 0,
+  "annotation_source": "COCO 2017; conversão automática para YOLO e Pascal VOC",
+  "makesense_review": "Pendente de importação, revisão e exportação no Make Sense AI"
+}

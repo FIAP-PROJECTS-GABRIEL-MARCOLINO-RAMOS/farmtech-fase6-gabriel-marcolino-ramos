@@ -1,0 +1,712 @@
+[34m[1mtrain: [0mweights=/home/acer-nitro/work/FIAP/farmtech-fase6/models/yolov5n.pt, cfg=, data=/home/acer-nitro/work/FIAP/farmtech-fase6/data/dataset-local.yaml, hyp=data/hyps/hyp.scratch-low.yaml, epochs=30, batch_size=8, imgsz=416, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, noplots=False, evolve=None, bucket=, cache=None, image_weights=False, device=0, multi_scale=False, single_cls=False, optimizer=SGD, sync_bn=False, workers=0, project=/home/acer-nitro/work/FIAP/farmtech-fase6/results/runs, name=yolov5n_30ep, exist_ok=True, quad=False, cos_lr=False, label_smoothing=0.0, patience=0, freeze=[0], save_period=-1, seed=565717, local_rank=-1, entity=None, upload_dataset=False, bbox_interval=-1, artifact_alias=latest
+fatal: ambiguous argument 'HEAD..origin/master': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+YOLOv5 🚀 v7.0-0-g915bbf2 Python-3.12.3 torch-2.5.1+cu124 CUDA:0 (NVIDIA GeForce RTX 3050 6GB Laptop GPU, 5804MiB)
+
+[34m[1mhyperparameters: [0mlr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+[34m[1mClearML: [0mrun 'pip install clearml' to automatically track, visualize and remotely train YOLOv5 🚀 in ClearML
+[34m[1mComet: [0mrun 'pip install comet_ml' to automatically track and visualize YOLOv5 🚀 runs in Comet
+[34m[1mTensorBoard: [0mStart with 'tensorboard --logdir /home/acer-nitro/work/FIAP/farmtech-fase6/results/runs', view at http://localhost:6006/
+Downloading https://ultralytics.com/assets/Arial.ttf to /home/acer-nitro/.config/Ultralytics/Arial.ttf...
+Command 'git rev-list HEAD..origin/master --count' returned non-zero exit status 128.
+  0%|          | 0.00/755k [00:00<?, ?B/s]100%|██████████| 755k/755k [00:00<00:00, 11.1MB/s]
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:123: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(weights, map_location='cpu')  # load checkpoint to CPU to avoid CUDA memory leak
+Overriding model.yaml nc=80 with nc=2
+
+                 from  n    params  module                                  arguments                     
+  0                -1  1      1760  models.common.Conv                      [3, 16, 6, 2, 2]              
+  1                -1  1      4672  models.common.Conv                      [16, 32, 3, 2]                
+  2                -1  1      4800  models.common.C3                        [32, 32, 1]                   
+  3                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]                
+  4                -1  2     29184  models.common.C3                        [64, 64, 2]                   
+  5                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]               
+  6                -1  3    156928  models.common.C3                        [128, 128, 3]                 
+  7                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]              
+  8                -1  1    296448  models.common.C3                        [256, 256, 1]                 
+  9                -1  1    164608  models.common.SPPF                      [256, 256, 5]                 
+ 10                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]              
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']          
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]                           
+ 13                -1  1     90880  models.common.C3                        [256, 128, 1, False]          
+ 14                -1  1      8320  models.common.Conv                      [128, 64, 1, 1]               
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']          
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]                           
+ 17                -1  1     22912  models.common.C3                        [128, 64, 1, False]           
+ 18                -1  1     36992  models.common.Conv                      [64, 64, 3, 2]                
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]                           
+ 20                -1  1     74496  models.common.C3                        [128, 128, 1, False]          
+ 21                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]              
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]                           
+ 23                -1  1    296448  models.common.C3                        [256, 256, 1, False]          
+ 24      [17, 20, 23]  1      9471  models.yolo.Detect                      [2, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [64, 128, 256]]
+Model summary: 214 layers, 1766623 parameters, 1766623 gradients, 4.2 GFLOPs
+
+Transferred 343/349 items from /home/acer-nitro/work/FIAP/farmtech-fase6/models/yolov5n.pt
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/models/common.py:702: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/models/common.py:702: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+[34m[1mAMP: [0mchecks passed ✅
+[34m[1moptimizer:[0m SGD(lr=0.01) with parameter groups 57 weight(decay=0.0), 60 weight(decay=0.0005), 60 bias
+[34m[1mtrain: [0mScanning /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/train...:   0%|          | 0/64 00:00[34m[1mtrain: [0mScanning /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/train... 64 images, 0 backgrounds, 0 corrupt: 100%|██████████| 64/64 00:00
+[34m[1mtrain: [0mNew cache created: /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/train.cache
+[34m[1mval: [0mScanning /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/val...:   0%|          | 0/8 00:00[34m[1mval: [0mScanning /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/val... 8 images, 0 backgrounds, 0 corrupt: 100%|██████████| 8/8 00:00
+[34m[1mval: [0mNew cache created: /home/acer-nitro/work/FIAP/farmtech-fase6/data/labels/val.cache
+
+[34m[1mAutoAnchor: [0m4.17 anchors/target, 0.992 Best Possible Recall (BPR). Current anchors are a good fit to dataset ✅
+Plotting labels to /home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep/labels.jpg... 
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:252: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=amp)
+Image sizes 416 train, 416 val
+Using 0 dataloader workers
+Logging results to [1m/home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep[0m
+Starting training for 30 epochs...
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.373G     0.1201    0.03328    0.03408         31        416:   0%|          | 0/8 00:00       0/29     0.373G     0.1201    0.03328    0.03408         31        416:  12%|█▎        | 1/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1245    0.03264    0.03561         53        416:  12%|█▎        | 1/8 00:01       0/29     0.377G     0.1245    0.03264    0.03561         53        416:  25%|██▌       | 2/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1226     0.0318    0.03508         32        416:  25%|██▌       | 2/8 00:01       0/29     0.377G     0.1226     0.0318    0.03508         32        416:  38%|███▊      | 3/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G      0.124    0.03222    0.03526         49        416:  38%|███▊      | 3/8 00:01       0/29     0.377G      0.124    0.03222    0.03526         49        416:  50%|█████     | 4/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1247    0.03143    0.03557         33        416:  50%|█████     | 4/8 00:02       0/29     0.377G     0.1247    0.03143    0.03557         33        416:  62%|██████▎   | 5/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1252    0.03047    0.03527         31        416:  62%|██████▎   | 5/8 00:02       0/29     0.377G     0.1252    0.03047    0.03527         31        416:  75%|███████▌  | 6/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1254    0.02956    0.03574         21        416:  75%|███████▌  | 6/8 00:02       0/29     0.377G     0.1254    0.02956    0.03574         21        416:  88%|████████▊ | 7/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       0/29     0.377G     0.1255     0.0301    0.03569         51        416:  88%|████████▊ | 7/8 00:02       0/29     0.377G     0.1255     0.0301    0.03569         51        416: 100%|██████████| 8/8 00:02       0/29     0.377G     0.1255     0.0301    0.03569         51        416: 100%|██████████| 8/8 00:02
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00117       0.25    0.00115   0.000575
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29      0.38G     0.1235    0.02686    0.03006         26        416:   0%|          | 0/8 00:00       1/29      0.38G     0.1235    0.02686    0.03006         26        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G      0.123    0.02651    0.03318         28        416:  12%|█▎        | 1/8 00:00       1/29     0.384G      0.123    0.02651    0.03318         28        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1239     0.0267     0.0347         30        416:  25%|██▌       | 2/8 00:00       1/29     0.384G     0.1239     0.0267     0.0347         30        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1246    0.02656    0.03346         31        416:  38%|███▊      | 3/8 00:00       1/29     0.384G     0.1246    0.02656    0.03346         31        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1237    0.02756     0.0334         34        416:  50%|█████     | 4/8 00:00       1/29     0.384G     0.1237    0.02756     0.0334         34        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1235    0.02868    0.03366         50        416:  62%|██████▎   | 5/8 00:00       1/29     0.384G     0.1235    0.02868    0.03366         50        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1232    0.02883    0.03391         30        416:  75%|███████▌  | 6/8 00:00       1/29     0.384G     0.1232    0.02883    0.03391         30        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       1/29     0.384G     0.1232    0.02866    0.03353         35        416:  88%|████████▊ | 7/8 00:01       1/29     0.384G     0.1232    0.02866    0.03353         35        416: 100%|██████████| 8/8 00:01       1/29     0.384G     0.1232    0.02866    0.03353         35        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13     0.0025      0.486    0.00306    0.00105
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1212    0.02727    0.03105         35        416:   0%|          | 0/8 00:00       2/29     0.384G     0.1212    0.02727    0.03105         35        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1211    0.02948    0.03074         46        416:  12%|█▎        | 1/8 00:00       2/29     0.384G     0.1211    0.02948    0.03074         46        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1171    0.02832    0.03267         22        416:  25%|██▌       | 2/8 00:00       2/29     0.384G     0.1171    0.02832    0.03267         22        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1183    0.02783    0.03135         31        416:  38%|███▊      | 3/8 00:00       2/29     0.384G     0.1183    0.02783    0.03135         31        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1187    0.02854    0.03144         48        416:  50%|█████     | 4/8 00:00       2/29     0.384G     0.1187    0.02854    0.03144         48        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1176    0.02878      0.031         33        416:  62%|██████▎   | 5/8 00:00       2/29     0.384G     0.1176    0.02878      0.031         33        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1168    0.02953    0.03048         39        416:  75%|███████▌  | 6/8 00:00       2/29     0.384G     0.1168    0.02953    0.03048         39        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       2/29     0.384G     0.1171    0.02909       0.03         33        416:  88%|████████▊ | 7/8 00:01       2/29     0.384G     0.1171    0.02909       0.03         33        416: 100%|██████████| 8/8 00:01       2/29     0.384G     0.1171    0.02909       0.03         33        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00252      0.486    0.00463    0.00129
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1122    0.02696    0.02643         29        416:   0%|          | 0/8 00:00       3/29     0.384G     0.1122    0.02696    0.02643         29        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1148    0.02332    0.02721         13        416:  12%|█▎        | 1/8 00:00       3/29     0.384G     0.1148    0.02332    0.02721         13        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1137    0.02623    0.02731         38        416:  25%|██▌       | 2/8 00:00       3/29     0.384G     0.1137    0.02623    0.02731         38        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1129    0.02712    0.02706         32        416:  38%|███▊      | 3/8 00:00       3/29     0.384G     0.1129    0.02712    0.02706         32        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G      0.112    0.02796    0.02721         31        416:  50%|█████     | 4/8 00:00       3/29     0.384G      0.112    0.02796    0.02721         31        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1115    0.02856    0.02663         33        416:  62%|██████▎   | 5/8 00:00       3/29     0.384G     0.1115    0.02856    0.02663         33        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1119    0.02901    0.02605         41        416:  75%|███████▌  | 6/8 00:00       3/29     0.384G     0.1119    0.02901    0.02605         41        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       3/29     0.384G     0.1112    0.02927    0.02587         34        416:  88%|████████▊ | 7/8 00:01       3/29     0.384G     0.1112    0.02927    0.02587         34        416: 100%|██████████| 8/8 00:01       3/29     0.384G     0.1112    0.02927    0.02587         34        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00412      0.778    0.00718    0.00132
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.384G     0.1033    0.03115    0.02386         31        416:   0%|          | 0/8 00:00       4/29     0.384G     0.1033    0.03115    0.02386         31        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.384G     0.1068    0.03097    0.02436         41        416:  12%|█▎        | 1/8 00:00       4/29     0.384G     0.1068    0.03097    0.02436         41        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.384G     0.1069    0.03028    0.02379         32        416:  25%|██▌       | 2/8 00:00       4/29     0.384G     0.1069    0.03028    0.02379         32        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.384G     0.1084    0.02895    0.02301         34        416:  38%|███▊      | 3/8 00:00       4/29     0.384G     0.1084    0.02895    0.02301         34        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.386G     0.1082    0.02844     0.0221         27        416:  50%|█████     | 4/8 00:00       4/29     0.386G     0.1082    0.02844     0.0221         27        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.386G     0.1076    0.02896    0.02191         34        416:  62%|██████▎   | 5/8 00:00       4/29     0.386G     0.1076    0.02896    0.02191         34        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.386G     0.1055    0.02863    0.02126         23        416:  75%|███████▌  | 6/8 00:00       4/29     0.386G     0.1055    0.02863    0.02126         23        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       4/29     0.386G     0.1055    0.02875    0.02119         32        416:  88%|████████▊ | 7/8 00:01       4/29     0.386G     0.1055    0.02875    0.02119         32        416: 100%|██████████| 8/8 00:01       4/29     0.386G     0.1055    0.02875    0.02119         32        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00442      0.833    0.00908    0.00159
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1029    0.02971    0.02198         30        416:   0%|          | 0/8 00:00       5/29     0.386G     0.1029    0.02971    0.02198         30        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G      0.104    0.03262    0.02091         45        416:  12%|█▎        | 1/8 00:00       5/29     0.386G      0.104    0.03262    0.02091         45        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1043    0.03129    0.02064         32        416:  25%|██▌       | 2/8 00:00       5/29     0.386G     0.1043    0.03129    0.02064         32        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1027    0.02964    0.02097         22        416:  38%|███▊      | 3/8 00:00       5/29     0.386G     0.1027    0.02964    0.02097         22        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1031    0.03076    0.02037         39        416:  50%|█████     | 4/8 00:00       5/29     0.386G     0.1031    0.03076    0.02037         39        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G      0.103    0.03067    0.02026         34        416:  62%|██████▎   | 5/8 00:00       5/29     0.386G      0.103    0.03067    0.02026         34        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1032    0.02913    0.01997         18        416:  75%|███████▌  | 6/8 00:00       5/29     0.386G     0.1032    0.02913    0.01997         18        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       5/29     0.386G     0.1031    0.02855    0.01984         29        416:  88%|████████▊ | 7/8 00:01       5/29     0.386G     0.1031    0.02855    0.01984         29        416: 100%|██████████| 8/8 00:01       5/29     0.386G     0.1031    0.02855    0.01984         29        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00434      0.833     0.0184    0.00413
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G    0.08471    0.03143    0.01654         28        416:   0%|          | 0/8 00:00       6/29     0.386G    0.08471    0.03143    0.01654         28        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G     0.0953    0.03262    0.01729         46        416:  12%|█▎        | 1/8 00:00       6/29     0.386G     0.0953    0.03262    0.01729         46        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G    0.09571    0.03378    0.01727         41        416:  25%|██▌       | 2/8 00:00       6/29     0.386G    0.09571    0.03378    0.01727         41        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G    0.09747     0.0326     0.0166         36        416:  38%|███▊      | 3/8 00:00       6/29     0.386G    0.09747     0.0326     0.0166         36        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G     0.0982    0.03304    0.01667         43        416:  50%|█████     | 4/8 00:00       6/29     0.386G     0.0982    0.03304    0.01667         43        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G     0.0979    0.03448    0.01692         43        416:  62%|██████▎   | 5/8 00:00       6/29     0.386G     0.0979    0.03448    0.01692         43        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G    0.09783    0.03311    0.01702         26        416:  75%|███████▌  | 6/8 00:01       6/29     0.386G    0.09783    0.03311    0.01702         26        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       6/29     0.386G    0.09749    0.03187    0.01682         24        416:  88%|████████▊ | 7/8 00:01       6/29     0.386G    0.09749    0.03187    0.01682         24        416: 100%|██████████| 8/8 00:01       6/29     0.386G    0.09749    0.03187    0.01682         24        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13    0.00427      0.833     0.0328    0.00952
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09958    0.02587    0.01755         30        416:   0%|          | 0/8 00:00       7/29     0.386G    0.09958    0.02587    0.01755         30        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09776    0.02827    0.01704         35        416:  12%|█▎        | 1/8 00:00       7/29     0.386G    0.09776    0.02827    0.01704         35        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09609    0.02945    0.01649         31        416:  25%|██▌       | 2/8 00:00       7/29     0.386G    0.09609    0.02945    0.01649         31        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09596    0.02979    0.01594         37        416:  38%|███▊      | 3/8 00:00       7/29     0.386G    0.09596    0.02979    0.01594         37        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09602    0.02846    0.01567         27        416:  50%|█████     | 4/8 00:00       7/29     0.386G    0.09602    0.02846    0.01567         27        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09542    0.02818    0.01508         27        416:  62%|██████▎   | 5/8 00:00       7/29     0.386G    0.09542    0.02818    0.01508         27        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09542    0.02871    0.01481         40        416:  75%|███████▌  | 6/8 00:00       7/29     0.386G    0.09542    0.02871    0.01481         40        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       7/29     0.386G    0.09483    0.02856    0.01493         26        416:  88%|████████▊ | 7/8 00:01       7/29     0.386G    0.09483    0.02856    0.01493         26        416: 100%|██████████| 8/8 00:01       7/29     0.386G    0.09483    0.02856    0.01493         26        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13     0.0219      0.833     0.0902     0.0268
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.09091    0.02607    0.01547         26        416:   0%|          | 0/8 00:00       8/29     0.386G    0.09091    0.02607    0.01547         26        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.08979     0.0304    0.01415         36        416:  12%|█▎        | 1/8 00:00       8/29     0.386G    0.08979     0.0304    0.01415         36        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.08819    0.02907    0.01287         23        416:  25%|██▌       | 2/8 00:00       8/29     0.386G    0.08819    0.02907    0.01287         23        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.08869    0.02749    0.01292         23        416:  38%|███▊      | 3/8 00:00       8/29     0.386G    0.08869    0.02749    0.01292         23        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.08923    0.02773    0.01267         34        416:  50%|█████     | 4/8 00:00       8/29     0.386G    0.08923    0.02773    0.01267         34        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.09086     0.0285    0.01257         45        416:  62%|██████▎   | 5/8 00:00       8/29     0.386G    0.09086     0.0285    0.01257         45        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.09139    0.02952    0.01263         42        416:  75%|███████▌  | 6/8 00:01       8/29     0.386G    0.09139    0.02952    0.01263         42        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       8/29     0.386G    0.09108    0.02968    0.01272         33        416:  88%|████████▊ | 7/8 00:01       8/29     0.386G    0.09108    0.02968    0.01272         33        416: 100%|██████████| 8/8 00:01       8/29     0.386G    0.09108    0.02968    0.01272         33        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.105      0.528      0.115      0.045
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09267    0.03468    0.01177         44        416:   0%|          | 0/8 00:00       9/29     0.386G    0.09267    0.03468    0.01177         44        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09048    0.02952    0.01149         26        416:  12%|█▎        | 1/8 00:00       9/29     0.386G    0.09048    0.02952    0.01149         26        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09163    0.02781      0.012         34        416:  25%|██▌       | 2/8 00:00       9/29     0.386G    0.09163    0.02781      0.012         34        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09136    0.02951     0.0118         38        416:  38%|███▊      | 3/8 00:00       9/29     0.386G    0.09136    0.02951     0.0118         38        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09093    0.02862    0.01241         26        416:  50%|█████     | 4/8 00:00       9/29     0.386G    0.09093    0.02862    0.01241         26        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G     0.0907    0.02867    0.01201         36        416:  62%|██████▎   | 5/8 00:00       9/29     0.386G     0.0907    0.02867    0.01201         36        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.09094    0.02971    0.01171         45        416:  75%|███████▌  | 6/8 00:01       9/29     0.386G    0.09094    0.02971    0.01171         45        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+       9/29     0.386G    0.08888    0.02889    0.01165         21        416:  88%|████████▊ | 7/8 00:01       9/29     0.386G    0.08888    0.02889    0.01165         21        416: 100%|██████████| 8/8 00:01       9/29     0.386G    0.08888    0.02889    0.01165         21        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.193      0.581      0.216     0.0839
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08714     0.0328    0.01093         35        416:   0%|          | 0/8 00:00      10/29     0.386G    0.08714     0.0328    0.01093         35        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08881     0.0291    0.01106         26        416:  12%|█▎        | 1/8 00:00      10/29     0.386G    0.08881     0.0291    0.01106         26        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08936    0.02752    0.01069         29        416:  25%|██▌       | 2/8 00:00      10/29     0.386G    0.08936    0.02752    0.01069         29        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08935    0.02887    0.01085         42        416:  38%|███▊      | 3/8 00:00      10/29     0.386G    0.08935    0.02887    0.01085         42        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08841    0.02779    0.01062         26        416:  50%|█████     | 4/8 00:00      10/29     0.386G    0.08841    0.02779    0.01062         26        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08775     0.0284    0.01082         35        416:  62%|██████▎   | 5/8 00:00      10/29     0.386G    0.08775     0.0284    0.01082         35        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08696    0.02867    0.01085         35        416:  75%|███████▌  | 6/8 00:00      10/29     0.386G    0.08696    0.02867    0.01085         35        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      10/29     0.386G    0.08632    0.02959    0.01073         39        416:  88%|████████▊ | 7/8 00:01      10/29     0.386G    0.08632    0.02959    0.01073         39        416: 100%|██████████| 8/8 00:01      10/29     0.386G    0.08632    0.02959    0.01073         39        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.207      0.403      0.284      0.135
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08047    0.03349    0.00922         37        416:   0%|          | 0/8 00:00      11/29     0.386G    0.08047    0.03349    0.00922         37        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08269    0.03223   0.009231         33        416:  12%|█▎        | 1/8 00:00      11/29     0.386G    0.08269    0.03223   0.009231         33        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08166    0.03172    0.01024         32        416:  25%|██▌       | 2/8 00:00      11/29     0.386G    0.08166    0.03172    0.01024         32        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08174     0.0328   0.009674         46        416:  38%|███▊      | 3/8 00:00      11/29     0.386G    0.08174     0.0328   0.009674         46        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08139     0.0332   0.009321         40        416:  50%|█████     | 4/8 00:00      11/29     0.386G    0.08139     0.0332   0.009321         40        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08214    0.03147    0.01009         23        416:  62%|██████▎   | 5/8 00:00      11/29     0.386G    0.08214    0.03147    0.01009         23        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G    0.08195    0.03252    0.00968         44        416:  75%|███████▌  | 6/8 00:01      11/29     0.386G    0.08195    0.03252    0.00968         44        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      11/29     0.386G     0.0819    0.03302   0.009514         46        416:  88%|████████▊ | 7/8 00:01      11/29     0.386G     0.0819    0.03302   0.009514         46        416: 100%|██████████| 8/8 00:01      11/29     0.386G     0.0819    0.03302   0.009514         46        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.262      0.458      0.296      0.128
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.08045    0.02596    0.01044         26        416:   0%|          | 0/8 00:00      12/29     0.386G    0.08045    0.02596    0.01044         26        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.08384    0.02901   0.009564         40        416:  12%|█▎        | 1/8 00:00      12/29     0.386G    0.08384    0.02901   0.009564         40        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.08358    0.03155   0.008843         44        416:  25%|██▌       | 2/8 00:00      12/29     0.386G    0.08358    0.03155   0.008843         44        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.08142    0.03039   0.008878         26        416:  38%|███▊      | 3/8 00:00      12/29     0.386G    0.08142    0.03039   0.008878         26        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G     0.0806    0.02988   0.008756         35        416:  50%|█████     | 4/8 00:00      12/29     0.386G     0.0806    0.02988   0.008756         35        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.07957    0.03104   0.008836         41        416:  62%|██████▎   | 5/8 00:00      12/29     0.386G    0.07957    0.03104   0.008836         41        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.07843    0.03052   0.009434         26        416:  75%|███████▌  | 6/8 00:01      12/29     0.386G    0.07843    0.03052   0.009434         26        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      12/29     0.386G    0.07816    0.02924   0.009235         19        416:  88%|████████▊ | 7/8 00:01      12/29     0.386G    0.07816    0.02924   0.009235         19        416: 100%|██████████| 8/8 00:01      12/29     0.386G    0.07816    0.02924   0.009235         19        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.447      0.346      0.304      0.114
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07156    0.03086   0.009839         30        416:   0%|          | 0/8 00:00      13/29     0.386G    0.07156    0.03086   0.009839         30        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07518    0.02856   0.009152         34        416:  12%|█▎        | 1/8 00:00      13/29     0.386G    0.07518    0.02856   0.009152         34        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07699    0.02944   0.008953         44        416:  25%|██▌       | 2/8 00:00      13/29     0.386G    0.07699    0.02944   0.008953         44        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07675    0.02969   0.009398         37        416:  38%|███▊      | 3/8 00:00      13/29     0.386G    0.07675    0.02969   0.009398         37        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07696    0.02969   0.009084         37        416:  50%|█████     | 4/8 00:00      13/29     0.386G    0.07696    0.02969   0.009084         37        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07629     0.0299   0.008943         34        416:  62%|██████▎   | 5/8 00:00      13/29     0.386G    0.07629     0.0299   0.008943         34        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07607    0.02972   0.008821         29        416:  75%|███████▌  | 6/8 00:00      13/29     0.386G    0.07607    0.02972   0.008821         29        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      13/29     0.386G    0.07586    0.02943   0.008894         30        416:  88%|████████▊ | 7/8 00:01      13/29     0.386G    0.07586    0.02943   0.008894         30        416: 100%|██████████| 8/8 00:01      13/29     0.386G    0.07586    0.02943   0.008894         30        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.439      0.403      0.408      0.194
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07584    0.02365   0.007971         25        416:   0%|          | 0/8 00:00      14/29     0.386G    0.07584    0.02365   0.007971         25        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07669    0.02893   0.007226         40        416:  12%|█▎        | 1/8 00:00      14/29     0.386G    0.07669    0.02893   0.007226         40        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07538    0.02597   0.007573         21        416:  25%|██▌       | 2/8 00:00      14/29     0.386G    0.07538    0.02597   0.007573         21        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07561    0.02617   0.006974         30        416:  38%|███▊      | 3/8 00:00      14/29     0.386G    0.07561    0.02617   0.006974         30        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07417    0.02498   0.007567         21        416:  50%|█████     | 4/8 00:00      14/29     0.386G    0.07417    0.02498   0.007567         21        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07514    0.02585   0.007369         37        416:  62%|██████▎   | 5/8 00:00      14/29     0.386G    0.07514    0.02585   0.007369         37        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07541    0.02583   0.007227         31        416:  75%|███████▌  | 6/8 00:01      14/29     0.386G    0.07541    0.02583   0.007227         31        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      14/29     0.386G    0.07574    0.02613     0.0077         32        416:  88%|████████▊ | 7/8 00:01      14/29     0.386G    0.07574    0.02613     0.0077         32        416: 100%|██████████| 8/8 00:01      14/29     0.386G    0.07574    0.02613     0.0077         32        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.349      0.292      0.277      0.105
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.08045    0.02752   0.005101         38        416:   0%|          | 0/8 00:00      15/29     0.386G    0.08045    0.02752   0.005101         38        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.08016    0.02853   0.005812         36        416:  12%|█▎        | 1/8 00:00      15/29     0.386G    0.08016    0.02853   0.005812         36        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.08003    0.02691   0.006043         30        416:  25%|██▌       | 2/8 00:00      15/29     0.386G    0.08003    0.02691   0.006043         30        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.07965    0.02751   0.005926         38        416:  38%|███▊      | 3/8 00:00      15/29     0.386G    0.07965    0.02751   0.005926         38        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.07871    0.02802      0.006         35        416:  50%|█████     | 4/8 00:00      15/29     0.386G    0.07871    0.02802      0.006         35        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G     0.0782     0.0279   0.006434         30        416:  62%|██████▎   | 5/8 00:00      15/29     0.386G     0.0782     0.0279   0.006434         30        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G    0.07794    0.02762   0.006593         29        416:  75%|███████▌  | 6/8 00:01      15/29     0.386G    0.07794    0.02762   0.006593         29        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      15/29     0.386G     0.0777    0.02888   0.006612         45        416:  88%|████████▊ | 7/8 00:01      15/29     0.386G     0.0777    0.02888   0.006612         45        416: 100%|██████████| 8/8 00:01      15/29     0.386G     0.0777    0.02888   0.006612         45        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.408       0.31      0.279      0.141
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07332     0.0319   0.005919         39        416:   0%|          | 0/8 00:00      16/29     0.386G    0.07332     0.0319   0.005919         39        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07576    0.03079   0.006832         37        416:  12%|█▎        | 1/8 00:00      16/29     0.386G    0.07576    0.03079   0.006832         37        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07533    0.03041   0.006879         34        416:  25%|██▌       | 2/8 00:00      16/29     0.386G    0.07533    0.03041   0.006879         34        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G     0.0761    0.03174   0.006774         51        416:  38%|███▊      | 3/8 00:00      16/29     0.386G     0.0761    0.03174   0.006774         51        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07423    0.03008   0.006511         27        416:  50%|█████     | 4/8 00:00      16/29     0.386G    0.07423    0.03008   0.006511         27        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07335    0.02964   0.006417         29        416:  62%|██████▎   | 5/8 00:00      16/29     0.386G    0.07335    0.02964   0.006417         29        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07324    0.03008   0.006359         41        416:  75%|███████▌  | 6/8 00:01      16/29     0.386G    0.07324    0.03008   0.006359         41        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      16/29     0.386G    0.07345    0.03009   0.006493         41        416:  88%|████████▊ | 7/8 00:01      16/29     0.386G    0.07345    0.03009   0.006493         41        416: 100%|██████████| 8/8 00:01      16/29     0.386G    0.07345    0.03009   0.006493         41        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.246      0.528      0.273      0.132
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07396    0.02768   0.009986         29        416:   0%|          | 0/8 00:00      17/29     0.386G    0.07396    0.02768   0.009986         29        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07501    0.02918   0.008216         37        416:  12%|█▎        | 1/8 00:00      17/29     0.386G    0.07501    0.02918   0.008216         37        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07554    0.03181   0.007986         49        416:  25%|██▌       | 2/8 00:00      17/29     0.386G    0.07554    0.03181   0.007986         49        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07443     0.0314   0.007886         35        416:  38%|███▊      | 3/8 00:00      17/29     0.386G    0.07443     0.0314   0.007886         35        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07225    0.02968   0.007443         24        416:  50%|█████     | 4/8 00:00      17/29     0.386G    0.07225    0.02968   0.007443         24        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07129    0.02921   0.007231         29        416:  62%|██████▎   | 5/8 00:00      17/29     0.386G    0.07129    0.02921   0.007231         29        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.07088     0.0283   0.007929         27        416:  75%|███████▌  | 6/8 00:01      17/29     0.386G    0.07088     0.0283   0.007929         27        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      17/29     0.386G    0.06992      0.028   0.007517         25        416:  88%|████████▊ | 7/8 00:01      17/29     0.386G    0.06992      0.028   0.007517         25        416: 100%|██████████| 8/8 00:01      17/29     0.386G    0.06992      0.028   0.007517         25        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.359      0.403      0.324      0.137
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07266    0.02711   0.004319         32        416:   0%|          | 0/8 00:00      18/29     0.386G    0.07266    0.02711   0.004319         32        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07197     0.0268   0.004106         29        416:  12%|█▎        | 1/8 00:00      18/29     0.386G    0.07197     0.0268   0.004106         29        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.06888    0.02628   0.004642         25        416:  25%|██▌       | 2/8 00:00      18/29     0.386G    0.06888    0.02628   0.004642         25        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.06938    0.02793   0.005472         40        416:  38%|███▊      | 3/8 00:00      18/29     0.386G    0.06938    0.02793   0.005472         40        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07027    0.02717    0.00535         29        416:  50%|█████     | 4/8 00:00      18/29     0.386G    0.07027    0.02717    0.00535         29        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07059    0.02694   0.005357         31        416:  62%|██████▎   | 5/8 00:00      18/29     0.386G    0.07059    0.02694   0.005357         31        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07023    0.02617   0.005975         19        416:  75%|███████▌  | 6/8 00:01      18/29     0.386G    0.07023    0.02617   0.005975         19        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      18/29     0.386G    0.07043    0.02644   0.005793         35        416:  88%|████████▊ | 7/8 00:01      18/29     0.386G    0.07043    0.02644   0.005793         35        416: 100%|██████████| 8/8 00:01      18/29     0.386G    0.07043    0.02644   0.005793         35        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.489      0.403      0.409      0.174
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.06974    0.02818   0.005836         31        416:   0%|          | 0/8 00:00      19/29     0.386G    0.06974    0.02818   0.005836         31        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.07536    0.02552   0.006233         28        416:  12%|█▎        | 1/8 00:00      19/29     0.386G    0.07536    0.02552   0.006233         28        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.07254    0.02613   0.006523         26        416:  25%|██▌       | 2/8 00:00      19/29     0.386G    0.07254    0.02613   0.006523         26        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.07057    0.02669   0.006707         34        416:  38%|███▊      | 3/8 00:00      19/29     0.386G    0.07057    0.02669   0.006707         34        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.06971     0.0273     0.0063         36        416:  50%|█████     | 4/8 00:00      19/29     0.386G    0.06971     0.0273     0.0063         36        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.06864    0.02713    0.00628         27        416:  62%|██████▎   | 5/8 00:00      19/29     0.386G    0.06864    0.02713    0.00628         27        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.06832    0.02794   0.006645         37        416:  75%|███████▌  | 6/8 00:01      19/29     0.386G    0.06832    0.02794   0.006645         37        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      19/29     0.386G    0.06809    0.02768   0.006361         32        416:  88%|████████▊ | 7/8 00:01      19/29     0.386G    0.06809    0.02768   0.006361         32        416: 100%|██████████| 8/8 00:01      19/29     0.386G    0.06809    0.02768   0.006361         32        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.491      0.403      0.388      0.189
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.07515    0.02314   0.004212         33        416:   0%|          | 0/8 00:00      20/29     0.386G    0.07515    0.02314   0.004212         33        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.07471     0.0239   0.004911         33        416:  12%|█▎        | 1/8 00:00      20/29     0.386G    0.07471     0.0239   0.004911         33        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.07169    0.02443   0.005278         32        416:  25%|██▌       | 2/8 00:00      20/29     0.386G    0.07169    0.02443   0.005278         32        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.07016    0.02278   0.005248         18        416:  38%|███▊      | 3/8 00:00      20/29     0.386G    0.07016    0.02278   0.005248         18        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.06802    0.02221   0.004871         20        416:  50%|█████     | 4/8 00:00      20/29     0.386G    0.06802    0.02221   0.004871         20        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.06784    0.02278   0.005065         27        416:  62%|██████▎   | 5/8 00:00      20/29     0.386G    0.06784    0.02278   0.005065         27        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.06821    0.02388   0.005254         37        416:  75%|███████▌  | 6/8 00:01      20/29     0.386G    0.06821    0.02388   0.005254         37        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      20/29     0.386G    0.06902     0.0254    0.00524         48        416:  88%|████████▊ | 7/8 00:01      20/29     0.386G    0.06902     0.0254    0.00524         48        416: 100%|██████████| 8/8 00:01      20/29     0.386G    0.06902     0.0254    0.00524         48        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.648      0.403      0.445      0.233
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.07525    0.02356   0.005535         35        416:   0%|          | 0/8 00:00      21/29     0.386G    0.07525    0.02356   0.005535         35        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G     0.0738    0.03121   0.004353         54        416:  12%|█▎        | 1/8 00:00      21/29     0.386G     0.0738    0.03121   0.004353         54        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.07155    0.02988   0.004297         33        416:  25%|██▌       | 2/8 00:00      21/29     0.386G    0.07155    0.02988   0.004297         33        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.07128    0.03056   0.005303         37        416:  38%|███▊      | 3/8 00:00      21/29     0.386G    0.07128    0.03056   0.005303         37        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.06915    0.02757   0.004694         15        416:  50%|█████     | 4/8 00:00      21/29     0.386G    0.06915    0.02757   0.004694         15        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.06902    0.02742   0.004452         33        416:  62%|██████▎   | 5/8 00:00      21/29     0.386G    0.06902    0.02742   0.004452         33        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.06866    0.02843   0.004401         39        416:  75%|███████▌  | 6/8 00:00      21/29     0.386G    0.06866    0.02843   0.004401         39        416:  88%|████████▊ | 7/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      21/29     0.386G    0.06858    0.02849   0.004827         33        416:  88%|████████▊ | 7/8 00:01      21/29     0.386G    0.06858    0.02849   0.004827         33        416: 100%|██████████| 8/8 00:01      21/29     0.386G    0.06858    0.02849   0.004827         33        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.377      0.504      0.343      0.153
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06097    0.02414    0.00376         27        416:   0%|          | 0/8 00:00      22/29     0.386G    0.06097    0.02414    0.00376         27        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G     0.0642    0.02755   0.003708         37        416:  12%|█▎        | 1/8 00:00      22/29     0.386G     0.0642    0.02755   0.003708         37        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06459    0.02567   0.003955         25        416:  25%|██▌       | 2/8 00:00      22/29     0.386G    0.06459    0.02567   0.003955         25        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06533    0.02525   0.003919         29        416:  38%|███▊      | 3/8 00:00      22/29     0.386G    0.06533    0.02525   0.003919         29        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06536    0.02515   0.004445         25        416:  50%|█████     | 4/8 00:00      22/29     0.386G    0.06536    0.02515   0.004445         25        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06589     0.0251   0.004477         32        416:  62%|██████▎   | 5/8 00:00      22/29     0.386G    0.06589     0.0251   0.004477         32        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G     0.0669    0.02569   0.004315         44        416:  75%|███████▌  | 6/8 00:01      22/29     0.386G     0.0669    0.02569   0.004315         44        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      22/29     0.386G    0.06695    0.02556   0.004327         28        416:  88%|████████▊ | 7/8 00:01      22/29     0.386G    0.06695    0.02556   0.004327         28        416: 100%|██████████| 8/8 00:01      22/29     0.386G    0.06695    0.02556   0.004327         28        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.639      0.403      0.446      0.234
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.07318    0.02904   0.006199         36        416:   0%|          | 0/8 00:00      23/29     0.386G    0.07318    0.02904   0.006199         36        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.07316    0.02922   0.006645         33        416:  12%|█▎        | 1/8 00:00      23/29     0.386G    0.07316    0.02922   0.006645         33        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.07354    0.03014   0.006209         48        416:  25%|██▌       | 2/8 00:00      23/29     0.386G    0.07354    0.03014   0.006209         48        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.06905    0.02724    0.01109         17        416:  38%|███▊      | 3/8 00:00      23/29     0.386G    0.06905    0.02724    0.01109         17        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.06776    0.02746    0.01017         32        416:  50%|█████     | 4/8 00:00      23/29     0.386G    0.06776    0.02746    0.01017         32        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.06821    0.02848   0.009413         48        416:  62%|██████▎   | 5/8 00:00      23/29     0.386G    0.06821    0.02848   0.009413         48        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G    0.06787    0.02903   0.008704         39        416:  75%|███████▌  | 6/8 00:01      23/29     0.386G    0.06787    0.02903   0.008704         39        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      23/29     0.386G     0.0685     0.0303   0.008137         61        416:  88%|████████▊ | 7/8 00:01      23/29     0.386G     0.0685     0.0303   0.008137         61        416: 100%|██████████| 8/8 00:01      23/29     0.386G     0.0685     0.0303   0.008137         61        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.518      0.403      0.397      0.228
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.06424    0.02388   0.008242         28        416:   0%|          | 0/8 00:00      24/29     0.386G    0.06424    0.02388   0.008242         28        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.05975    0.02542   0.006878         28        416:  12%|█▎        | 1/8 00:00      24/29     0.386G    0.05975    0.02542   0.006878         28        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G      0.063    0.02843    0.00619         45        416:  25%|██▌       | 2/8 00:00      24/29     0.386G      0.063    0.02843    0.00619         45        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.06579    0.02947   0.005532         45        416:  38%|███▊      | 3/8 00:00      24/29     0.386G    0.06579    0.02947   0.005532         45        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.06556    0.03029   0.005122         43        416:  50%|█████     | 4/8 00:00      24/29     0.386G    0.06556    0.03029   0.005122         43        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.06493    0.02929   0.005426         27        416:  62%|██████▎   | 5/8 00:00      24/29     0.386G    0.06493    0.02929   0.005426         27        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G    0.06557    0.02787   0.005444         20        416:  75%|███████▌  | 6/8 00:01      24/29     0.386G    0.06557    0.02787   0.005444         20        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      24/29     0.386G      0.065    0.02666    0.00528         20        416:  88%|████████▊ | 7/8 00:01      24/29     0.386G      0.065    0.02666    0.00528         20        416: 100%|██████████| 8/8 00:01      24/29     0.386G      0.065    0.02666    0.00528         20        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13       0.39      0.528      0.437      0.266
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.07053    0.02427   0.002973         33        416:   0%|          | 0/8 00:00      25/29     0.386G    0.07053    0.02427   0.002973         33        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06843    0.02743   0.002933         42        416:  12%|█▎        | 1/8 00:00      25/29     0.386G    0.06843    0.02743   0.002933         42        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06817    0.02933    0.00389         41        416:  25%|██▌       | 2/8 00:00      25/29     0.386G    0.06817    0.02933    0.00389         41        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G     0.0673    0.03002   0.003663         37        416:  38%|███▊      | 3/8 00:00      25/29     0.386G     0.0673    0.03002   0.003663         37        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06543    0.02883   0.003361         26        416:  50%|█████     | 4/8 00:00      25/29     0.386G    0.06543    0.02883   0.003361         26        416:  62%|██████▎   | 5/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06588    0.02788   0.003291         29        416:  62%|██████▎   | 5/8 00:00      25/29     0.386G    0.06588    0.02788   0.003291         29        416:  75%|███████▌  | 6/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06467    0.02754   0.003555         27        416:  75%|███████▌  | 6/8 00:01      25/29     0.386G    0.06467    0.02754   0.003555         27        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      25/29     0.386G    0.06518    0.02754   0.003804         36        416:  88%|████████▊ | 7/8 00:01      25/29     0.386G    0.06518    0.02754   0.003804         36        416: 100%|██████████| 8/8 00:01      25/29     0.386G    0.06518    0.02754   0.003804         36        416: 100%|██████████| 8/8 00:01
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.475      0.359      0.451      0.258
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G     0.0667    0.03805     0.0035         46        416:   0%|          | 0/8 00:00      26/29     0.386G     0.0667    0.03805     0.0035         46        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.07603    0.02595   0.003434         12        416:  12%|█▎        | 1/8 00:00      26/29     0.386G    0.07603    0.02595   0.003434         12        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.07325    0.02416   0.003961         24        416:  25%|██▌       | 2/8 00:00      26/29     0.386G    0.07325    0.02416   0.003961         24        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.07176    0.02563   0.005396         33        416:  38%|███▊      | 3/8 00:00      26/29     0.386G    0.07176    0.02563   0.005396         33        416:  50%|█████     | 4/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.07102    0.02668   0.005223         38        416:  50%|█████     | 4/8 00:01      26/29     0.386G    0.07102    0.02668   0.005223         38        416:  62%|██████▎   | 5/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.06974    0.02638   0.004955         29        416:  62%|██████▎   | 5/8 00:01      26/29     0.386G    0.06974    0.02638   0.004955         29        416:  75%|███████▌  | 6/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.06904    0.02559   0.004708         26        416:  75%|███████▌  | 6/8 00:01      26/29     0.386G    0.06904    0.02559   0.004708         26        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      26/29     0.386G    0.06906    0.02645   0.004567         46        416:  88%|████████▊ | 7/8 00:02      26/29     0.386G    0.06906    0.02645   0.004567         46        416: 100%|██████████| 8/8 00:02      26/29     0.386G    0.06906    0.02645   0.004567         46        416: 100%|██████████| 8/8 00:02
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13       0.39      0.528       0.44      0.254
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06218    0.02653   0.003878         32        416:   0%|          | 0/8 00:00      27/29     0.386G    0.06218    0.02653   0.003878         32        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06197    0.02849   0.004291         35        416:  12%|█▎        | 1/8 00:00      27/29     0.386G    0.06197    0.02849   0.004291         35        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06175     0.0264   0.003563         28        416:  25%|██▌       | 2/8 00:00      27/29     0.386G    0.06175     0.0264   0.003563         28        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06273    0.02754   0.003556         35        416:  38%|███▊      | 3/8 00:01      27/29     0.386G    0.06273    0.02754   0.003556         35        416:  50%|█████     | 4/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06203    0.02639   0.003386         26        416:  50%|█████     | 4/8 00:01      27/29     0.386G    0.06203    0.02639   0.003386         26        416:  62%|██████▎   | 5/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G     0.0624    0.02762   0.003811         42        416:  62%|██████▎   | 5/8 00:01      27/29     0.386G     0.0624    0.02762   0.003811         42        416:  75%|███████▌  | 6/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G     0.0625    0.02649   0.003697         24        416:  75%|███████▌  | 6/8 00:02      27/29     0.386G     0.0625    0.02649   0.003697         24        416:  88%|████████▊ | 7/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      27/29     0.386G    0.06353    0.02652   0.003667         42        416:  88%|████████▊ | 7/8 00:02      27/29     0.386G    0.06353    0.02652   0.003667         42        416: 100%|██████████| 8/8 00:02      27/29     0.386G    0.06353    0.02652   0.003667         42        416: 100%|██████████| 8/8 00:02
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.487      0.528      0.463      0.265
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06169    0.02983   0.004251         32        416:   0%|          | 0/8 00:00      28/29     0.386G    0.06169    0.02983   0.004251         32        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G     0.0637    0.02705   0.004476         32        416:  12%|█▎        | 1/8 00:00      28/29     0.386G     0.0637    0.02705   0.004476         32        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06358    0.02707   0.004557         29        416:  25%|██▌       | 2/8 00:00      28/29     0.386G    0.06358    0.02707   0.004557         29        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06441    0.02693   0.004571         32        416:  38%|███▊      | 3/8 00:01      28/29     0.386G    0.06441    0.02693   0.004571         32        416:  50%|█████     | 4/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06454    0.02593   0.006061         23        416:  50%|█████     | 4/8 00:01      28/29     0.386G    0.06454    0.02593   0.006061         23        416:  62%|██████▎   | 5/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06452    0.02634   0.005659         31        416:  62%|██████▎   | 5/8 00:01      28/29     0.386G    0.06452    0.02634   0.005659         31        416:  75%|███████▌  | 6/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06448    0.02596   0.005352         29        416:  75%|███████▌  | 6/8 00:01      28/29     0.386G    0.06448    0.02596   0.005352         29        416:  88%|████████▊ | 7/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      28/29     0.386G    0.06447    0.02574   0.005488         29        416:  88%|████████▊ | 7/8 00:02      28/29     0.386G    0.06447    0.02574   0.005488         29        416: 100%|██████████| 8/8 00:02      28/29     0.386G    0.06447    0.02574   0.005488         29        416: 100%|██████████| 8/8 00:02
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.525      0.528      0.471      0.277
+
+      Epoch    GPU_mem   box_loss   obj_loss   cls_loss  Instances       Size
+  0%|          | 0/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06325    0.02496   0.003487         30        416:   0%|          | 0/8 00:00      29/29     0.386G    0.06325    0.02496   0.003487         30        416:  12%|█▎        | 1/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06339     0.0252   0.003341         30        416:  12%|█▎        | 1/8 00:00      29/29     0.386G    0.06339     0.0252   0.003341         30        416:  25%|██▌       | 2/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06398    0.02535    0.00347         32        416:  25%|██▌       | 2/8 00:00      29/29     0.386G    0.06398    0.02535    0.00347         32        416:  38%|███▊      | 3/8 00:00/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G     0.0626    0.02491   0.003169         26        416:  38%|███▊      | 3/8 00:01      29/29     0.386G     0.0626    0.02491   0.003169         26        416:  50%|█████     | 4/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06229    0.02553   0.003132         41        416:  50%|█████     | 4/8 00:01      29/29     0.386G    0.06229    0.02553   0.003132         41        416:  62%|██████▎   | 5/8 00:01/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06246    0.02585   0.003815         32        416:  62%|██████▎   | 5/8 00:02      29/29     0.386G    0.06246    0.02585   0.003815         32        416:  75%|███████▌  | 6/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G    0.06293    0.02732   0.003878         45        416:  75%|███████▌  | 6/8 00:02      29/29     0.386G    0.06293    0.02732   0.003878         45        416:  88%|████████▊ | 7/8 00:02/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/train.py:307: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(amp):
+      29/29     0.386G     0.0626    0.02774    0.00456         35        416:  88%|████████▊ | 7/8 00:03      29/29     0.386G     0.0626    0.02774    0.00456         35        416: 100%|██████████| 8/8 00:03      29/29     0.386G     0.0626    0.02774    0.00456         35        416: 100%|██████████| 8/8 00:03
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.532      0.512      0.467       0.27
+
+30 epochs completed in 0.015 hours.
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/utils/general.py:1004: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  x = torch.load(f, map_location=torch.device('cpu'))
+Optimizer stripped from /home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep/weights/last.pt, 3.8MB
+Optimizer stripped from /home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep/weights/best.pt, 3.8MB
+
+Validating /home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep/weights/best.pt...
+/home/acer-nitro/work/FIAP/farmtech-fase6/vendor/yolov5/models/experimental.py:79: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(attempt_download(w), map_location='cpu')  # load
+Fusing layers... 
+Model summary: 157 layers, 1761871 parameters, 0 gradients, 4.1 GFLOPs
+                 Class     Images  Instances          P          R      mAP50   mAP50-95:   0%|          | 0/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00                 Class     Images  Instances          P          R      mAP50   mAP50-95: 100%|██████████| 1/1 00:00
+                   all          8         13      0.524      0.528      0.472      0.277
+                  gato          8          4      0.442        0.5      0.409      0.294
+                 carro          8          9      0.606      0.556      0.535      0.259
+Results saved to [1m/home/acer-nitro/work/FIAP/farmtech-fase6/results/runs/yolov5n_30ep[0m
