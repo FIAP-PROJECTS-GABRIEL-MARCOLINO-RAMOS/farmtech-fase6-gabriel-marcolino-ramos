@@ -1,25 +1,25 @@
-Olá, eu sou Gabriel Marcolino Ramos, RM cinco seis cinco sete um sete. Este é o projeto da Fase seis, O despertar da Rede Neural.
+Olá, eu sou Gabriel Marcolino Ramos, RM565717. Este é o projeto da Fase 6, O despertar da Rede Neural.
 
-O objetivo foi construir e comparar um detector de objetos com YOLO e uma rede convolucional treinada do zero. Escolhi duas classes visualmente distintas: gatos e carros. O experimento demonstra o método; não representa um sistema agrícola pronto para produção.
+O objetivo foi construir e comparar um detector de objetos com YOLO e uma rede convolucional sem pré-treinamento. Escolhi 2 classes visualmente distintas: gatos e carros. O experimento demonstra o método; não representa um sistema agrícola pronto para produção.
 
-A base contém oitenta fotografias reais do COCO, quarenta por classe. Para cada classe, separei trinta e duas imagens para treino, quatro para validação e quatro para teste. O manifesto registra as fontes, as licenças e os hashes dos arquivos. Não há imagens idênticas entre as partições. Duas fotos visualmente relacionadas ficaram dentro do treino.
+A base contém 80 fotografias reais do COCO, 40 por classe. Para cada classe, separei 32 imagens para treino, 4 para validação e 4 para teste. O manifesto registra as fontes, as licenças e os hashes dos arquivos. Não há imagens idênticas entre as partições. 2 fotos visualmente relacionadas ficaram dentro do treino.
 
 As caixas delimitadoras de referência vêm das anotações do COCO e foram convertidas para YOLO e Pascal VOC. A documentação registra separadamente a situação da revisão no MakeSense. As imagens e os rótulos estão no repositório e também têm uma cópia organizada no Google Drive.
 
-Este é o notebook com as células executadas. Ele reúne a auditoria da base, os treinamentos, a validação, o teste e as conclusões. No Colab, há células para montar o Drive e persistir os arquivos. A execução registrada foi feita localmente, em uma GPU RTX três mil e cinquenta.
+Este é o notebook com as células executadas. Ele reúne a auditoria da base, os treinamentos, a validação, o teste e as conclusões. No Colab, há células para montar o Drive e persistir os arquivos. A execução registrada foi feita localmente, em uma GPU RTX 3050.
 
-Realizei dois treinamentos independentes do YOLO versão cinco nano: um com trinta épocas e outro com sessenta. Ambos começaram do mesmo peso pré-treinado, com imagens de quatrocentos e dezesseis pixels, batch oito e a mesma semente. O segundo não foi uma continuação do primeiro.
+Realizei 2 treinamentos independentes do YOLOv5 nano: 1 com 30 épocas e outro com 60. Ambos começaram do mesmo peso pré-treinado, com imagens de 416 pixels, batch 8 e a mesma semente. O treino de 60 épocas não foi uma continuação do de 30.
 
-A configuração de sessenta épocas foi escolhida pelo mAP da validação, antes da comparação no teste. Treinei também uma CNN pequena, com três blocos convolucionais, inicialização aleatória e sessenta épocas. O melhor checkpoint da CNN foi escolhido pela menor perda de validação.
+A configuração de 60 épocas foi escolhida pelo mAP da validação, antes da comparação no teste. Treinei também uma CNN pequena, com 3 blocos convolucionais, inicialização aleatória e 60 épocas. O melhor checkpoint da CNN foi escolhido pela menor perda de validação.
 
 Nas curvas, é possível acompanhar a evolução dos modelos e a diferença entre treino e validação. Mais épocas não garantem melhoria em todas as métricas, especialmente com uma base tão pequena.
 
-Na tabela de teste, os dois YOLOs ajustados acertaram a classe em seis das oito imagens, ou setenta e cinco por cento. A CNN acertou cinco, ou sessenta e dois vírgula cinco por cento. O YOLO padrão acertou quatro nessa comparação por imagem. Quando não há detecção acima do limiar, considerei uma abstenção como erro.
+Na tabela de teste, os 2 YOLOs ajustados acertaram a classe em 6 das 8 imagens, ou 75%. A CNN acertou 5, ou 62,5%. O YOLO padrão acertou 4 nessa comparação por imagem. Quando não há detecção acima do limiar, considerei uma abstenção como erro.
 
-Para avaliar a localização, usei o mAP. O YOLO padrão obteve aproximadamente zero vírgula cinquenta e dois no mAP de cinquenta a noventa e cinco. O ajustado por sessenta épocas obteve zero vírgula trinta e sete. Portanto, o modelo padrão foi melhor em detecção, mesmo com menor acurácia pela regra adotada para classificar a imagem. São métricas diferentes.
+Para avaliar a localização, usei o mAP. O YOLO padrão obteve aproximadamente 0,52 no mAP de 50 a 95. O ajustado por 60 épocas obteve 0,37. Portanto, o modelo padrão foi melhor em detecção, mesmo com menor acurácia pela regra adotada para classificar a imagem. São métricas diferentes.
 
-Aqui estão todas as oito imagens de teste com as caixas de referência e as predições. Os exemplos permitem observar objetos não detectados, falsos positivos e diferenças na localização das caixas. A CNN apenas classifica a imagem inteira; ela não produz essas caixas.
+Aqui estão todas as 8 imagens de teste com as caixas de referência e as predições. Os exemplos permitem observar objetos não detectados, falsos positivos e diferenças na localização das caixas. A CNN apenas classifica a imagem inteira; ela não produz essas caixas.
 
-O ajuste de trinta épocas levou cerca de sessenta e nove segundos, o de sessenta levou cento e dezessete, e a CNN levou vinte. A CNN também apresentou menor latência típica, mas sua resolução e tarefa são diferentes. Os tempos dependem do equipamento e do protocolo medido.
+O ajuste de 30 épocas levou cerca de 69 segundos, o de 60 levou 117, e a CNN levou 20. A CNN também apresentou menor latência típica, mas sua resolução e tarefa são diferentes. Os tempos dependem do equipamento e do protocolo medido.
 
-A principal limitação é o teste com apenas oito imagens. Além disso, gatos e carros já fazem parte do pré-treinamento COCO. Os resultados são exploratórios e não demonstram superioridade estatística ou generalização para produção. O repositório preserva o notebook executado, os dados, os pesos, os históricos e a análise para permitir a conferência do experimento. Obrigado.
+A principal limitação é o teste com apenas 8 imagens. Além disso, gatos e carros já fazem parte do pré-treinamento COCO. Os resultados são exploratórios e não demonstram superioridade estatística ou generalização para produção. O repositório preserva o notebook executado, os dados, os pesos, os históricos e a análise para permitir a conferência do experimento. Obrigado.
